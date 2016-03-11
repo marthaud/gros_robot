@@ -1,0 +1,7 @@
+CFLAGS = -Wall -Werror -g -O0
+
+Noeud.o : grille/Noeud.cpp
+	g++ $(CFLAGS) -c -o $@ $<
+
+Grill.o : grille/Grill.cpp
+	g++ $(CFLAGS) -c -o $@ $<
