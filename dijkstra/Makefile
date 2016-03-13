@@ -5,3 +5,8 @@ Noeud.o : grille/Noeud.cpp
 
 Grille.o : grille/Grille.cpp
 	g++ $(CFLAGS) -c -o $@ $<
+
+test_grille.o : ./tests/test_grille.cpp
+	g++ $(CFLAGS) -c -o $@ $<
+test_grille : test_grille.o Grille.o Noeud.o
+	g++ -o $@ $^
