@@ -1,0 +1,2 @@
+test du constructeur : si la grille est trop grande : segfault
+     hypo : pas asser de mémoire
