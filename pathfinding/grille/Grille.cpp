@@ -27,9 +27,16 @@ Grille::Grille()
       if (dans_meme_ligne(i, i-1) && rentre_dans_gille(i-1))
 	grille_tab[i].set_next(&grille_tab[i-1], GAUCHE) ;
     }
+
+  taille = NBR_NOEUD_ABCISSE*NBR_NOEUD_ORDONEE ;
 }
 
 Noeud* Grille::get_noeud(int abscisse, int ordonnee)
 {
   return &grille_tab[ordonnee*NBR_NOEUD_ABCISSE+abscisse] ;
+}
+
+int Grille::get_taille()
+{
+  return taille ;
 }

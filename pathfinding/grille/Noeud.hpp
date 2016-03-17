@@ -16,7 +16,7 @@ public :
   int get_ordonnee() ;
   int set_coordonnee(int abscisse, int ordonnee) ;
   int set_next(Noeud* suivent, int position) ;
-  Noeud* get_next(int position) ; // num_suivent =indice dans le tab next
+  Noeud* get_next(int position) ; // position =indice dans le tab next
 };
 
 #endif // GRILLE_HPP
