@@ -67,6 +67,17 @@ void test_dijkstra()
   //assert(my_grille.get_noeud(5, 2)->predecessor == my_grille.get_noeud(4, 2)) ;
   //assert(my_grille.get_noeud(4, 2)->predecessor == my_grille.get_noeud(3, 2)) ;
   std::cout << std::endl ;
+
+  Grille my_second_grille ;
+  my_second_grille.isoler_bloc(4, 4, 4, 4) ;
+  int error = dijkstra(&my_second_grille, my_second_grille.get_noeud(1, 2), my_second_grille.get_noeud(5, 5)) ;
+  assert(error == 1) ;
+
+  Grille my_thierd_grille ;
+  my_thierd_grille.isoler_bloc(3,0,1,10) ;
+  my_thierd_grille.isoler_bloc(0,3,10,1) ;
+  error = dijkstra(&my_thierd_grille, my_thierd_grille.get_noeud(1, 2), my_thierd_grille.get_noeud(5, 5)) ;
+  assert(error == 1) ;
 }
 
 int main()
@@ -76,9 +87,3 @@ int main()
   test_dijkstra() ;
   return 0 ;
 }
-
-
-/*
-  test_di_choisir_noeud: PROBLEME: res reste sur la premier valeur de la grille 
-  : &(graph->grille[0])
- */

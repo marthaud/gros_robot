@@ -6,10 +6,10 @@
  */
 bool comparateur(float a, float b)
 {
-  if (a == INFINIT)
-    return true ;
   if (b == INFINIT)
     return false ;
+  if (a == INFINIT)
+    return true ;
   return a > b ;
 }
 
@@ -24,6 +24,8 @@ int dijkstra(Grille* graph, Noeud* depart, Noeud* arriver)
   while (arriver->is_black == false)
     {
       cochon_inde = di_choisir_noeud(graph) ;
+      if (cochon_inde == NULL)
+	return 1 ;
       di_relachement(graph, cochon_inde) ;
     }
   return 0 ;
@@ -46,9 +48,8 @@ int di_init_graph(Grille* graph)
 
 /*!
  * \brief complexité O(nbr de noeud)
- * \return noeud pas noir avec la plus petit distance
+ * \return noeud pas noir avec la plus petit distance, NULL si tuot les noeud accessible sont noir
  */
-#include <stdio.h>
 Noeud* di_choisir_noeud(Grille* graph)
 {
   Noeud sentinel ;
@@ -64,6 +65,8 @@ Noeud* di_choisir_noeud(Grille* graph)
 	  res = &(graph->grille[i]) ;
 	}
     }
+  if (res == &sentinel)
+    return NULL ;
   return res ;
 }
 
