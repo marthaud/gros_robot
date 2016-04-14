@@ -21,7 +21,7 @@ void test_di_choisir_noeud()
   std::cout << "OK\n" ;
 }
 
-void test_di_action()
+void test_di_relachement()
 {
   Grille my_grille ;
   Noeud* my_noeud = my_grille.get_noeud(2, 8) ;
@@ -32,7 +32,7 @@ void test_di_action()
   my_noeud->next[GAUCHE]->distance_origine = 1 ;
   my_noeud->next[BAS] = NULL ;
   my_noeud->next[DROIT]->distance_origine = INFINIT ;
-  di_action(&my_grille, my_noeud) ;
+  di_relachement(&my_grille, my_noeud) ;
   std::cout << "plus loin ; infinit ; moins loin ; NULL ... " ;
   assert(my_noeud->next[HAUT]->distance_origine == 3) ;
   assert(my_noeud->next[HAUT]->predecessor == my_noeud) ;
@@ -72,7 +72,7 @@ void test_dijkstra()
 int main()
 {
   test_di_choisir_noeud() ;
-  test_di_action() ;
+  test_di_relachement() ;
   test_dijkstra() ;
   return 0 ;
 }

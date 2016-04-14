@@ -15,6 +15,6 @@ int di_init_graph(Grille* graph) ;
 
 Noeud* di_choisir_noeud(Grille* graph) ;
 
-int di_action(Grille* graph, Noeud* depart) ;
+int di_relachement(Grille* graph, Noeud* depart) ;
 
 #endif // DIJKSTRA_HPP

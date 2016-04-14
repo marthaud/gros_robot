@@ -35,6 +35,8 @@ void test_constructeur()
        assert(my_grille.get_noeud(NBR_NOEUD_ABCISSE-1,i)->next[DROIT] == NULL) ;
      }
    std::cout << "OK\n" ;
+   assert(my_grille.get_noeud(1,0)->next[GAUCHE] == NULL) ;
+   assert(my_grille.get_noeud(0,1)->next[BAS] == NULL) ;
 }
 
 void test_print_distance_origine()

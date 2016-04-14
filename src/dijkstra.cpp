@@ -12,7 +12,10 @@ bool comparateur(float a, float b)
     return false ;
   return a > b ;
 }
-#include <iostream>
+
+/*!
+ * \return 0 good, 1 non path : A FAIRE
+ */
 int dijkstra(Grille* graph, Noeud* depart, Noeud* arriver)
 {
   di_init_graph(graph) ;
@@ -21,7 +24,7 @@ int dijkstra(Grille* graph, Noeud* depart, Noeud* arriver)
   while (arriver->is_black == false)
     {
       cochon_inde = di_choisir_noeud(graph) ;
-      di_action(graph, cochon_inde) ;
+      di_relachement(graph, cochon_inde) ;
     }
   return 0 ;
 }
@@ -45,15 +48,18 @@ int di_init_graph(Grille* graph)
  * \brief complexité O(nbr de noeud)
  * \return noeud pas noir avec la plus petit distance
  */
+#include <stdio.h>
 Noeud* di_choisir_noeud(Grille* graph)
 {
-  Noeud* res = &(graph->grille[0]);
+  Noeud sentinel ;
+  sentinel.distance_origine = INFINIT ;
+  Noeud* res = &sentinel ;
   int i ;
   for (i=0 ; i<NBR_NOEUD_ORDONEE*NBR_NOEUD_ABCISSE ; i++)
-    {
+    { 
       if ((graph->grille[i].is_black == false)
 	  && comparateur(res->distance_origine,
-			 graph->grille[i].distance_origine))
+			   graph->grille[i].distance_origine))
 	{
 	  res = &(graph->grille[i]) ;
 	}
@@ -64,7 +70,7 @@ Noeud* di_choisir_noeud(Grille* graph)
 /*!
  * \brief traite sur les noeud suivent le noeud selectionée et le noircie
  */
-int di_action(Grille* graph, Noeud* depart)
+int di_relachement(Grille* graph, Noeud* depart)
 {
   int i ;
   float longueur_arete ;

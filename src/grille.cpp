@@ -2,7 +2,7 @@
 
 int rentre_dans_gille(int i)
 {
-  return i>0 && i<NBR_NOEUD_ABCISSE*NBR_NOEUD_ORDONEE ;
+  return i>=0 && i<NBR_NOEUD_ABCISSE*NBR_NOEUD_ORDONEE ;
 }
 
 int dans_meme_ligne(int i, int j)
