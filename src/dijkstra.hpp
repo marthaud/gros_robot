@@ -5,7 +5,7 @@
 #include "noeud.hpp"
 #include "stdlib.h"
 
-#define INFINIT -1
+#define INFINIT -1.0
 
 bool comparateur(int a, int b) ;
 

@@ -52,11 +52,8 @@ void test_di_action()
 void test_dijkstra()
 {
   Grille my_grille ;
-  my_grille.get_noeud(3, 2)->next[DROIT] = NULL ;
-  my_grille.get_noeud(3, 2)->next[HAUT] = NULL ;
-  my_grille.get_noeud(3, 2)->next[BAS] = NULL ;
-  my_grille.get_noeud(2, 3)->next[DROIT] = NULL ;
-  my_grille.get_noeud(2, 1)->next[DROIT] = NULL ;
+  my_grille.isoler_bloc(5, 0, 3, 5) ;
+  my_grille.isoler_bloc(9, 2, 3, 9) ;
   dijkstra(&my_grille, my_grille.get_noeud(3, 2), my_grille.get_noeud(15, 2)) ;
   
   Noeud* parcour = my_grille.get_noeud(15, 2) ;

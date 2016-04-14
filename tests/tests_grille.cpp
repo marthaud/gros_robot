@@ -43,9 +43,19 @@ void test_print_distance_origine()
   my_grille.print_distance_origine() ;
 }
 
+void test_noeud_isoler()
+{
+  Grille my_grille ;
+  my_grille.get_noeud(5,6)->isoler() ;
+  assert(my_grille.get_noeud(5,7)->next[BAS] == NULL) ;
+  assert(my_grille.get_noeud(4,6)->next[DROIT] == NULL) ;
+  assert(my_grille.get_noeud(6,7)->next[BAS_GAUCHE] == NULL) ;
+}
+
 int main()
 {
   test_constructeur() ;
-  test_print_distance_origine() ;  
+  //test_print_distance_origine() ;
+  test_noeud_isoler() ;
   return 0 ;
 }

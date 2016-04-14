@@ -1,18 +1,29 @@
 #ifndef NOEUD_HPP
 #define NOEUD_HPP
 
-#define MAX_NEXT 4 // grille carré
+#define MAX_NEXT 8 // grille carré
 
 #define INFINIE -1
+
+// podition des noeud suivent :
+#define HAUT 0
+#define DROIT 1
+#define BAS 2
+#define GAUCHE 3
+#define HAUT_DROIT 4
+#define HAUT_GAUCHE 5
+#define BAS_GAUCHE 6
+#define BAS_DROIT 7
 
 struct Noeud
 {
   Noeud* next[MAX_NEXT] ;
   Noeud* predecessor ;
   bool is_black ;
-  int distance_origine ;
+  float distance_origine ;
   
-  Noeud() ; 
+  Noeud() ;
+  int isoler() ;
 };
 
 /*!

@@ -6,11 +6,6 @@
 #define NBR_NOEUD_ABCISSE 40
 #define NBR_NOEUD_ORDONEE 30
 
-// podition des noeud suivent :
-#define HAUT 0
-#define DROIT 1
-#define BAS 2
-#define GAUCHE 3
 
 struct Grille
 {
@@ -19,6 +14,7 @@ struct Grille
   Grille() ;
   Noeud* get_noeud(int abscisse, int ordonnee) ;
   void print_distance_origine() ;
+  int isoler_bloc(int abscisse, int ordonnee, int long_abscisse , int long_ordonnee) ;
 };
 
 #endif // GRILLE_HPP

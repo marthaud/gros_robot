@@ -4,7 +4,7 @@
  * \return true if a > b , false else
  * \brief prend en compte l'infinit : INFINIT
  */
-bool comparateur(int a, int b)
+bool comparateur(float a, float b)
 {
   if (a == INFINIT)
     return true ;
@@ -16,12 +16,10 @@ bool comparateur(int a, int b)
 int dijkstra(Grille* graph, Noeud* depart, Noeud* arriver)
 {
   di_init_graph(graph) ;
-  depart->distance_origine = 0 ;
+  depart->distance_origine = 0.0 ;
   Noeud* cochon_inde ;
-  while (arriver->distance_origine == INFINIT)
+  while (arriver->is_black == false)
     {
-      //graph->print_distance_origine() ;
-      //std::cout << "\n\n" ;
       cochon_inde = di_choisir_noeud(graph) ;
       di_action(graph, cochon_inde) ;
     }
@@ -69,14 +67,19 @@ Noeud* di_choisir_noeud(Grille* graph)
 int di_action(Grille* graph, Noeud* depart)
 {
   int i ;
+  float longueur_arete ;
   for (i=0 ; i<MAX_NEXT ; i++)
     {
+      if (i>3)
+	longueur_arete = 1.4 ;
+      else
+	longueur_arete = 1.0 ;
       if ((depart->next[i] != NULL) &&
 	  comparateur(depart->next[i]->distance_origine,
-		      depart->distance_origine))
+		      depart->distance_origine+longueur_arete))
 	{
 	  depart->next[i]->predecessor = depart ;
-	  depart->next[i]->distance_origine = depart->distance_origine + 1 ;
+	  depart->next[i]->distance_origine = depart->distance_origine + longueur_arete ;
 	}
     }
   depart->is_black = true ;
